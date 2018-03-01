@@ -45,6 +45,7 @@ void Simulation::loadFiles(string filename) {
 }
 
 void Simulation::display() {
+	/*
 	std::vector<Vehicle> activeVehicle;
 	std::vector<Vehicle> inactiveVehicle;
 	std::vector<Ride> vectRide;
@@ -54,5 +55,5 @@ void Simulation::display() {
 	unsigned int height;
 	unsigned int width;
 	unsigned int bonus;
-
+	*/
 }

@@ -13,3 +13,7 @@ static std::ostream& operator<<(std::ostream& os, const intersection& inter) {
 static unsigned int operator-(const intersection& inter1, const intersection& inter2) {
 	return abs((long)(inter1.first - inter2.first)) + abs((long)(inter1.second - inter2.second));
 }
+
+static bool operator== (const intersection& inter1, const intersection& inter2) {
+	return inter1.first == inter2.first && inter1.second == inter2.second;
+}
