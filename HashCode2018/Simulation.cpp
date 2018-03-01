@@ -22,7 +22,7 @@ void Simulation::run(){
 
 
 void Simulation::loadFiles(string filename) {
-	string filepath = "../inputFiles" + filename;
+	string filepath = "../inputFiles/" + filename;
 
 	ifstream file(filepath, ios::in);
 
@@ -37,7 +37,7 @@ void Simulation::loadFiles(string filename) {
 
 		file >> rows >> columns >> nb_rides >> bonus >> steps;
 
-		std::vector<Ride> Rides;
+		vector<Ride> Rides;
 		unsigned int startX, startY, endX, endY, startLine, deadLine;
 		for (unsigned int i = 0; i < nb_rides; ++i) {
 			file >> startX >> startY >> endX >> endY >> startLine >> deadLine;
