@@ -2,14 +2,17 @@
 
 #include "Ride.h"
 
+#include <list>
+
 class Vehicle {
 	private:
-		intersection position;
-		bool isRiding;
-		intersection destination;
+		intersection position, destination;
+		std::list<Ride*> rides;
 	public:
-		void setDestination(int x, int y);
-		bool isFull();
+		void setDestination(intersection dest);
+		void addRide(Ride* ride);
+		intersection getPosition();
+		bool active();
 		Vehicle();
 		~Vehicle();
 };

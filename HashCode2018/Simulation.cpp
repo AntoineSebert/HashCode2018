@@ -8,10 +8,10 @@ Simulation::Simulation() {
 
 void Simulation::run(){
 	loadFiles("a_example.in");
-	/*
 	for (const auto& element : vectRide) {
 
 	}
+	/*
 	for(unsigned int i=0; i<nbRide;++i){
 		for(unsigned int j=0; j<nbVehicle;++j){
       
@@ -19,7 +19,6 @@ void Simulation::run(){
 	}
 	*/
 }
-
 
 void Simulation::loadFiles(string filename) {
 	string filepath = "../inputFiles/" + filename;
@@ -31,20 +30,29 @@ void Simulation::loadFiles(string filename) {
 		return;
 	}
 	else {
-		unsigned int rows, columns, nb_rides, bonus;
 		auto steps = pow(10, 9);
 		steps = 0;
 
-		file >> rows >> columns >> nb_rides >> bonus >> steps;
+		file >> height >> width >> nbRide >> bonus >> time;
 
-		vector<Ride> Rides;
 		unsigned int startX, startY, endX, endY, startLine, deadLine;
-		for (unsigned int i = 0; i < nb_rides; ++i) {
+		for (unsigned int i = 0; i < nbRide; ++i) {
 			file >> startX >> startY >> endX >> endY >> startLine >> deadLine;
 
-			Rides.emplace_back(intersection(startX, startY), intersection(endX, endY), startLine, deadLine);
+			vectRide.emplace_back(intersection(startX, startY), intersection(endX, endY), startLine, deadLine);
 		}
-
-		cout << rows << "; " << columns << "; " << nb_rides << "; " << bonus << "; " << steps << endl;
 	}
+}
+
+void Simulation::display() {
+	std::vector<Vehicle> activeVehicle;
+	std::vector<Vehicle> inactiveVehicle;
+	std::vector<Ride> vectRide;
+	unsigned int nbVehicle;
+	unsigned int nbRide;
+	unsigned int time;
+	unsigned int height;
+	unsigned int width;
+	unsigned int bonus;
+
 }

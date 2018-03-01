@@ -15,8 +15,10 @@ class Simulation {
 		unsigned int time;
 		unsigned int height;
 		unsigned int width;
+		unsigned int bonus;
 	public:
 		Simulation();
 		void run();
 		void loadFiles(std::string filename);
+		void display();
 };
