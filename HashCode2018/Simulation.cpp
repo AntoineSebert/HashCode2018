@@ -8,16 +8,29 @@ Simulation::Simulation() {
 
 void Simulation::run(){
 	loadFiles("a_example.in");
-	for (const auto& element : vectRide) {
-
-	}
-	/*
-	for(unsigned int i=0; i<nbRide;++i){
-		for(unsigned int j=0; j<nbVehicle;++j){
-      
-		}
-	}
-	*/
+	vector<int> deleteMe;                                                                                                                                                   
+        while(vectRide.size()>0){                                                                                                                                               
+        for (int j=0; j<vectRide.size();++j){                                                                                                                                   
+          for(unsigned int i=0; i < inactiveVehicle.size(); ++i){                                                                                                               
+            if(time+(vectRide[j].getFinish()-inactiveVehicle[i].getPosition()) <= vectRide[j].getLatest()){                                                                     
+              deleteMe.push_back(j);                                                                                                                                            
+              activeVehicle.push_back(inactiveVehicle[i]);                                                                                                                      
+              inactiveVehicle.erase(inactiveVehicle.begin()+i);                                                                                                                 
+              i=inactiveVehicle.size();                                                                                                                                         
+            }                                                                                                                                                                   
+          }                                                                                                                                                                     
+        }                                                                                                                                                                       
+        for(int i=0; i<deleteMe.size();++i){                                                                                                                                    
+          vectRide.erase(vectRide.begin + (deleteMe[i]-i));                                                                                                                     
+        }                                                                                                                                                                       
+        deleteMe.clear();                                                                                                                                                       
+        for(int i=0; i<activeVehicle.size();++i){                                                                                                                               
+          if(activeVehicle[i].moveToDest()){                                                                                                                                    
+            inactiveVehicle.push_back(activeVehicle[i]);                                                                                                                        
+            activeVehicle.erase(activeVehicle.begin()+i);                                                                                                                       
+          }                                                                                                                                                                     
+        }                                                                                                                                                                       
+        ++time;
 }
 
 void Simulation::loadFiles(string filename) {
