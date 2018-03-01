@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "main.hpp"
 
 class Ride {
@@ -8,6 +10,7 @@ class Ride {
 		unsigned int earliest, latest;
 	public:
 		Ride() = delete;
-		~Ride();
+		Ride(intersection start, intersection finish, unsigned int earliest, unsigned int latest);
+		std::ostream& operator<<(std::ostream& os);
 };
 
