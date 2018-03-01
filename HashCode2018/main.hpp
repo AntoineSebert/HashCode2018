@@ -3,4 +3,5 @@
 #include <vector>
 #include <utility>
 
-//typedef std::array<type, var>
+typedef std::pair<unsigned int, unsigned int> intersection;
+typedef std::vector<intersection> city;
