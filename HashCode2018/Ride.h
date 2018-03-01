@@ -9,8 +9,15 @@ class Ride {
 		intersection start, finish;
 		unsigned int earliest, latest;
 	public:
-		Ride() = delete;
-		Ride(intersection start, intersection finish, unsigned int earliest, unsigned int latest);
-		std::ostream& operator<<(std::ostream& os);
+		// constructors
+			Ride(intersection start, intersection finish, unsigned int earliest, unsigned int latest);
+			Ride() = delete;
+		// getters
+			intersection getStart();
+			intersection getFinish();
+			unsigned int getEarliest();
+			unsigned int getLatest();
+		// operators
+			std::ostream& operator<<(std::ostream& os) const;
 };
 
