@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "main.hpp"
+#include "intersection.hpp"
 
 class Ride {
 	private:
