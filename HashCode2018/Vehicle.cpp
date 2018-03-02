@@ -20,6 +20,11 @@ unsigned int Vehicle::counter = 0;
 		for (Ride* ride : rides)
 			os << ride;
 		os << '}';
+		return os;
+	}
+	std::istream & Vehicle::operator>>(std::istream & is) {
+		return is;
+		// TODO: insérer une instruction return ici
 	}
 // others
 	bool Vehicle::moveToDest() {

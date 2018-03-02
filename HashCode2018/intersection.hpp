@@ -12,7 +12,7 @@ static std::ostream& operator<<(std::ostream& os, const intersection& inter) {
 }
 
 static std::istream& operator>>(std::istream& is, intersection& inter) {
-	is >> ws >> inter.first >> ws >> inter.second;
+	return is >> std::ws >> inter.first >> std::ws >> inter.second;
 }
 
 static unsigned int operator-(const intersection& inter1, const intersection& inter2) {
