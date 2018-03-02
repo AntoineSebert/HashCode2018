@@ -25,7 +25,9 @@ intersection Vehicle::getPosition() { return position; }
 
 bool Vehicle::active() { return !rides.empty(); }
 
-Vehicle::Vehicle() {}
-
+Vehicle::Vehicle() {
+	id = Vehicle::counter;
+	++Vehicle::counter;
+}
 
 Vehicle::~Vehicle() {}
