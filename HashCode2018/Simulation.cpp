@@ -9,7 +9,8 @@ Simulation::Simulation() {
 void Simulation::run() {
 	loadFiles("a_example.in");
 	vector<int> deleteMe;
-	while (vectRide.size() > 0) {
+
+	while (vectRide.size()) {
 		for (int j = 0; j < vectRide.size(); ++j) {
 			for (unsigned int i = 0; i < inactiveVehicle.size(); ++i) {
 				if (time + (vectRide[j].getFinish() - inactiveVehicle[i].getPosition()) <= vectRide[j].getLatest()) {
@@ -50,25 +51,12 @@ void Simulation::loadFiles(string filename) {
 
 		file >> height >> width >> nbRide >> bonus >> time;
 
+		intersection start, end;
 		unsigned int startX, startY, endX, endY, startLine, deadLine;
 		for (unsigned int i = 0; i < nbRide; ++i) {
-			file >> startX >> startY >> endX >> endY >> startLine >> deadLine;
+			file >> start >> end >> startLine >> deadLine;
 
-			vectRide.emplace_back(intersection(startX, startY), intersection(endX, endY), startLine, deadLine);
+			vectRide.emplace_back(start, end, startLine, deadLine);
 		}
 	}
-}
-
-void Simulation::display() {
-	/*
-	std::vector<Vehicle> activeVehicle;
-	std::vector<Vehicle> inactiveVehicle;
-	std::vector<Ride> vectRide;
-	unsigned int nbVehicle;
-	unsigned int nbRide;
-	unsigned int time;
-	unsigned int height;
-	unsigned int width;
-	unsigned int bonus;
-	*/
 }

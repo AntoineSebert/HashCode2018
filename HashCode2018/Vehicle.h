@@ -16,14 +16,13 @@ class Vehicle {
 			~Vehicle();
 		// getters
 			intersection getPosition();
+			bool active();
 		// setters
 			void setDestination(intersection dest);
 		// operators
 			std::ostream& operator<<(std::ostream& os) const;
-			std::istream& operator>>(std::istream& is);
 		// others
 			bool moveToDest();
 			void addRide(Ride* ride);
-			bool active();
 };
 

@@ -12,19 +12,16 @@ unsigned int Vehicle::counter = 0;
 	Vehicle::~Vehicle() {}
 // getters
 	intersection Vehicle::getPosition() { return position; }
+	bool Vehicle::active() { return !rides.empty(); }
 // setters
 	void Vehicle::setDestination(intersection dest) { destination = dest; }
 // operators
 	ostream& Vehicle::operator<<(ostream& os) const {
 		os << id << "=pos(" << position << "), dest(" << destination << "), rides{";
 		for (Ride* ride : rides)
-			os << ride;
+			os << ride << ' ';
 		os << '}';
 		return os;
-	}
-	std::istream & Vehicle::operator>>(std::istream & is) {
-		return is;
-		// TODO: insérer une instruction return ici
 	}
 // others
 	bool Vehicle::moveToDest() {
@@ -42,4 +39,3 @@ unsigned int Vehicle::counter = 0;
 		return position == destination;
 	}
 	void Vehicle::addRide(Ride* ride) { rides.push_back(ride); }
-	bool Vehicle::active() { return !rides.empty(); }

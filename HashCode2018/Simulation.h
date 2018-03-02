@@ -17,10 +17,9 @@ class Simulation {
 		// constructor
 			Simulation();
 		// operators
-			// input stream operator to read files ?
+			// input stream
 			// ouput stream
 		// others
 			void run();
 			void loadFiles(std::string filename);
-			void display();
 };
