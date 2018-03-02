@@ -11,5 +11,5 @@ using namespace std;
 	unsigned int Ride::getLatest() { return latest; }
 // operators
 	std::ostream& Ride::operator<<(std::ostream& os) const {
-		return os << "start =" << start << ':' << finish << '|' << earliest << ':' << latest;
+		return os << "r=" << start << ':' << finish << '|' << earliest << ':' << latest;
 	}

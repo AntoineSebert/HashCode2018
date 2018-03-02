@@ -14,6 +14,13 @@ unsigned int Vehicle::counter = 0;
 	intersection Vehicle::getPosition() { return position; }
 // setters
 	void Vehicle::setDestination(intersection dest) { destination = dest; }
+// operators
+	ostream& Vehicle::operator<<(ostream& os) const {
+		os << id << "=pos(" << position << "), dest(" << destination << "), rides{";
+		for (Ride* ride : rides)
+			os << ride;
+		os << '}';
+	}
 // others
 	bool Vehicle::moveToDest() {
 		if (position.first < destination.first)

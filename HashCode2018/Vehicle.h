@@ -18,6 +18,8 @@ class Vehicle {
 			intersection getPosition();
 		// setters
 			void setDestination(intersection dest);
+		// operators
+			std::ostream& operator<<(std::ostream& os) const;
 		// others
 			bool moveToDest();
 			void addRide(Ride* ride);

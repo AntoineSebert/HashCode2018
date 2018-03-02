@@ -7,14 +7,11 @@
 
 class Simulation {
 	private:
-		std::vector<Vehicle> activeVehicle;
-		std::vector<Vehicle> inactiveVehicle;
+		std::vector<Vehicle> activeVehicle, inactiveVehicle;
 		std::vector<Ride> vectRide;
-		unsigned int nbVehicle;
-		unsigned int nbRide;
+		unsigned int nbVehicle, nbRide;
 		unsigned int time;
-		unsigned int height;
-		unsigned int width;
+		unsigned int height, width;
 		unsigned int bonus;
 	public:
 		Simulation();
