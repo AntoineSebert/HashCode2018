@@ -19,5 +19,6 @@ class Ride {
 			unsigned int getLatest();
 		// operators
 			std::ostream& operator<<(std::ostream& os) const;
+			std::istream& operator>>(std::istream& is);
 };
 

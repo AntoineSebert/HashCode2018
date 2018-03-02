@@ -14,8 +14,13 @@ class Simulation {
 		unsigned int height, width;
 		unsigned int bonus;
 	public:
-		Simulation();
-		void run();
-		void loadFiles(std::string filename);
-		void display();
+		// constructor
+			Simulation();
+		// operators
+			// input stream operator to read files ?
+			// ouput stream
+		// others
+			void run();
+			void loadFiles(std::string filename);
+			void display();
 };

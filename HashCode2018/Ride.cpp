@@ -13,3 +13,6 @@ using namespace std;
 	std::ostream& Ride::operator<<(std::ostream& os) const {
 		return os << "r=" << start << ':' << finish << '|' << earliest << ':' << latest;
 	}
+	std::istream& Ride::operator>>(std::istream& is) {
+		is >> start >> finish >> earliest >> latest;
+	}

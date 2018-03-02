@@ -20,10 +20,11 @@ void Simulation::run() {
 				}
 			}
 		}
-		for (int i = 0; i < deleteMe.size(); ++i) {
+		for (int i = 0; i < deleteMe.size(); ++i)
 			vectRide.erase(vectRide.begin() + (deleteMe[i] - i));
-		}
+
 		deleteMe.clear();
+
 		for (int i = 0; i < activeVehicle.size(); ++i) {
 			if (activeVehicle[i].moveToDest()) {
 				inactiveVehicle.push_back(activeVehicle[i]);
