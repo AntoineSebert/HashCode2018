@@ -1,7 +1,2 @@
-﻿  Simulation.cpp
-  Génération de code en cours...
-  Ignoré... (aucune modification pertinente détectée)
-  main.cpp
-  Vehicle.cpp
-Vehicle.obj : error LNK2001: symbole externe non résolu "private: static unsigned int Vehicle::counter" (?counter@Vehicle@@0IA)
-C:\Users\i\Desktop\HashCode2018\x64\Debug\HashCode2018.exe : fatal error LNK1120: 1 externes non résolus
+﻿  Vehicle.cpp
+  HashCode2018.vcxproj -> C:\Users\i\Desktop\HashCode2018\x64\Debug\HashCode2018.exe
