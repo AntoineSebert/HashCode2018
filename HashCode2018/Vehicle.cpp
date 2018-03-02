@@ -8,6 +8,7 @@ unsigned int Vehicle::counter = 0;
 	Vehicle::Vehicle() {
 		id = Vehicle::counter;
 		++Vehicle::counter;
+		position = intersection(0, 0);
 	}
 	Vehicle::~Vehicle() {}
 // getters

@@ -10,5 +10,5 @@ using namespace std;
 	unsigned int Ride::getEarliest() { return earliest; }
 	unsigned int Ride::getLatest() { return latest; }
 // operators
-	std::ostream& Ride::operator<<(std::ostream& os) const { return os << "r=" << start << ':' << finish << '|' << earliest << ':' << latest; }
-	std::istream& Ride::operator>>(std::istream& is) { return is >> start >> finish >> earliest >> latest; }
+	ostream& Ride::operator<<(ostream& os) const { return os << "r=" << start << ':' << finish << '|' << earliest << ':' << latest; }
+	istream& Ride::operator>>(istream& is) { return is >> start >> finish >> earliest >> latest; }

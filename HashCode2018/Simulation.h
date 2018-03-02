@@ -17,8 +17,8 @@ class Simulation {
 		// constructor
 			Simulation();
 		// operators
-			// input stream
-			// ouput stream
+			std::ostream& operator<<(std::ostream& os) const;
+			std::istream& operator>>(std::istream& is);
 		// others
 			void run();
 			void loadFiles(std::string filename);
