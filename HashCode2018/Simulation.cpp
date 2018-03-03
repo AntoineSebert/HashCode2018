@@ -33,17 +33,17 @@ using namespace std;
 		}
 	}
 	void Simulation::loadFile(string filename) {
-		string filepath = "../inputFiles/" + filename;
-		ifstream file(filepath, ios::in);
+		ifstream file(filename, ios::in);
 
 		if (!file) {
-			cout << "erreur chargement fichier" << endl;
+			cerr << "error loading the file " << filename << endl;
 			return;
 		}
 		else {
+			cout << "loading file " << filename << "..." << endl;
 			auto steps = pow(10, 9);
 			steps = 0;
-			fileLoaded = filepath;
+			fileLoaded = filename;
 
 			file >> height >> width >> nbRide >> bonus >> time;
 
@@ -54,6 +54,7 @@ using namespace std;
 				file >> start >> end >> startLine >> deadLine;
 				rides.emplace_back(start, end, startLine, deadLine);
 			}
+			cout << "file loaded" << endl;
 		}
 	}
 	void Simulation::updateVehiclesStatus() {
