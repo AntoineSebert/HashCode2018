@@ -3,6 +3,7 @@
 #include "Vehicle.h"
 
 #include <vector>
+#include <string>
 #include <fstream>
 
 class Simulation {
@@ -19,9 +20,8 @@ class Simulation {
 			Simulation();
 		// operators
 			std::ostream& operator<<(std::ostream& os) const;
-			std::istream& operator>>(std::istream& is);
 		// others
 			void run();
-			void loadFiles(std::string filename);
+			void loadFile(std::string filename);
 			void updateVehiclesStatus();
 };

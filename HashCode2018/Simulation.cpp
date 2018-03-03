@@ -7,15 +7,10 @@ using namespace std;
 // operators
 	ostream& Simulation::operator<<(ostream& os) const {
 		os << fileLoaded;
-		return os;
-	}
-	istream& Simulation::operator>>(istream& is) {
-		// TODO: insérer une instruction return ici
-		return is;
+		return os << fileLoaded;
 	}
 // others
 	void Simulation::run() {
-		loadFiles("a_example.in");
 		vector<int> deleteMe;
 
 		while (rides.size()) {
@@ -31,13 +26,13 @@ using namespace std;
 			}
 			for (unsigned int i = 0; i < deleteMe.size(); ++i)
 				rides.erase(rides.begin() + (deleteMe.at(i) - i));
-
 			deleteMe.clear();
+
 			updateVehiclesStatus();
 			++time;
 		}
 	}
-	void Simulation::loadFiles(string filename) {
+	void Simulation::loadFile(string filename) {
 		string filepath = "../inputFiles/" + filename;
 		ifstream file(filepath, ios::in);
 
