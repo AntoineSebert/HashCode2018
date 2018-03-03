@@ -24,10 +24,9 @@ using namespace std;
 // others
 	void Simulation::run() {
 		vector<int> deleteMe;
-
 		while (rides.size()) {
 			for (int j = 0; j < rides.size(); ++j) {
-				if(time > rides.at(j).getFinish()){
+				if(time > rides.at(j).getLatest()){
 					deleteMe.push_back(j);
 					continue;
 				}
@@ -61,8 +60,11 @@ using namespace std;
 			steps = 0;
 			fileLoaded = filename;
 
-			file >> height >> width >> nbRide >> bonus >> time;
-
+			file >> height >> width >> nbVehicle >> nbRide >> bonus >> time;
+			
+			for (unsigned int i = 0; i < nbVehicle; ++i)
+				inactiveVehicle.push_back(Vehicle());
+			
 			intersection start, end;
 			unsigned int startLine, deadLine;
 			rides.clear();
@@ -75,10 +77,9 @@ using namespace std;
 
 	}
 	void Simulation::exportToFile() {
-		string outputfile = fileLoaded.substr(fileLoaded.find('.'));
+		string outputfile = fileLoaded.substr(0, fileLoaded.find('.'));
 		ofstream os(outputfile + ".out", std::ofstream::out);
 		cout << "Exporting data to " << outputfile << "..." << endl;
-
 		for (const auto& vehicle : inactiveVehicle) {
 			os << vehicle.getRidesCount() << ' ';
 			for (unsigned int i = 0; i < vehicle.getRides().size(); ++i)
@@ -87,18 +88,14 @@ using namespace std;
 		}
 
 		os.close();
-		cout << "Exportatino done" << endl;
+		cout << "Exportation done" << endl;
 	}
 
 	void Simulation::updateVehiclesStatus() {
-		for (auto it = inactiveVehicle.begin(); it != inactiveVehicle.end(); ++it) {
+		for (auto it = activeVehicle.begin(); it != activeVehicle.end(); ++it) {
 			if (it->moveToDest()) {
 				inactiveVehicle.push_back(*it);
 				activeVehicle.erase(it);
-			}
-			else {
-				activeVehicle.push_back(*it);
-				inactiveVehicle.erase(it);
 			}
 		}
 	}
