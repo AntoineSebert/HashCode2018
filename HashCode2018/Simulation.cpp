@@ -69,6 +69,16 @@ using namespace std;
 			cout << "file loaded" << endl;
 		}
 	}
+	void Simulation::export() {
+		string outputfile = fileLoaded.substr(fileLoaded.find('.'));
+		ofstream ofs(outputfile + ".out", std::ofstream::out);
+
+		for (unsigned int i = 0; i < nbVehicle; ++i) {
+
+		}
+
+		ofs.close();
+	}
 
 	void Simulation::updateVehiclesStatus() {
 		for (auto it = inactiveVehicle.begin(); it != inactiveVehicle.end(); ++it) {
