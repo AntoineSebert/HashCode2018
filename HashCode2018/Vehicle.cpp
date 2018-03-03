@@ -12,8 +12,8 @@ unsigned int Vehicle::counter = 0;
 	}
 	Vehicle::~Vehicle() {}
 // getters
-	intersection Vehicle::getPosition() { return position; }
-	bool Vehicle::active() { return !rides.empty(); }
+	intersection Vehicle::getPosition() const { return position; }
+	bool Vehicle::active() const { return !rides.empty(); }
 // setters
 	void Vehicle::setDestination(intersection dest) { destination = dest; }
 // operators

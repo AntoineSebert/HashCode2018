@@ -15,8 +15,8 @@ class Vehicle {
 			Vehicle();
 			~Vehicle();
 		// getters
-			intersection getPosition();
-			bool active();
+			intersection getPosition() const;
+			bool active() const;
 		// setters
 			void setDestination(intersection dest);
 		// operators

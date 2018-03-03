@@ -6,7 +6,7 @@ using namespace std;
 	Simulation::Simulation() { width = height = time = nbRide = nbVehicle = 0; }
 // operators
 	ostream& Simulation::operator<<(ostream& os) const {
-		// TODO: insérer une instruction return ici
+		os << fileLoaded;
 		return os;
 	}
 	istream& Simulation::operator>>(istream& is) {
@@ -18,28 +18,22 @@ using namespace std;
 		loadFiles("a_example.in");
 		vector<int> deleteMe;
 
-		while (vectRide.size()) {
-			for (int j = 0; j < vectRide.size(); ++j) {
+		while (rides.size()) {
+			for (int j = 0; j < rides.size(); ++j) {
 				for (unsigned int i = 0; i < inactiveVehicle.size(); ++i) {
-					if (time + (vectRide[j].getFinish() - inactiveVehicle[i].getPosition()) <= vectRide[j].getLatest()) {
+					if (time + (rides.at(j).getFinish() - inactiveVehicle.at(i).getPosition()) <= rides.at(j).getLatest()) {
 						deleteMe.push_back(j);
-						activeVehicle.push_back(inactiveVehicle[i]);
+						activeVehicle.push_back(inactiveVehicle.at(i));
 						inactiveVehicle.erase(inactiveVehicle.begin() + i);
 						i = (unsigned int)inactiveVehicle.size();
 					}
 				}
 			}
-			for (int i = 0; i < deleteMe.size(); ++i)
-				vectRide.erase(vectRide.begin() + (deleteMe[i] - i));
+			for (unsigned int i = 0; i < deleteMe.size(); ++i)
+				rides.erase(rides.begin() + (deleteMe.at(i) - i));
 
 			deleteMe.clear();
-
-			for (int i = 0; i < activeVehicle.size(); ++i) {
-				if (activeVehicle[i].moveToDest()) {
-					inactiveVehicle.push_back(activeVehicle[i]);
-					activeVehicle.erase(activeVehicle.begin() + i);
-				}
-			}
+			updateVehiclesStatus();
 			++time;
 		}
 	}
@@ -54,14 +48,24 @@ using namespace std;
 		else {
 			auto steps = pow(10, 9);
 			steps = 0;
+			fileLoaded = filepath;
 
 			file >> height >> width >> nbRide >> bonus >> time;
 
 			intersection start, end;
 			unsigned int startLine, deadLine;
+			rides.clear();
 			for (unsigned int i = 0; i < nbRide; ++i) {
 				file >> start >> end >> startLine >> deadLine;
-				vectRide.emplace_back(start, end, startLine, deadLine);
+				rides.emplace_back(start, end, startLine, deadLine);
+			}
+		}
+	}
+	void Simulation::updateVehiclesStatus() {
+		for (auto it = inactiveVehicle.begin(); it != inactiveVehicle.end(); ++it) {
+			if (it->moveToDest()) {
+				inactiveVehicle.push_back(*it);
+				activeVehicle.erase(it);
 			}
 		}
 	}

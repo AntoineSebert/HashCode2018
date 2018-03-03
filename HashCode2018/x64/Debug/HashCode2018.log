@@ -1,7 +1,8 @@
 ﻿  Vehicle.cpp
   Simulation.cpp
+  Ride.cpp
   Génération de code en cours...
-c:\users\i\desktop\hashcode2018\hashcode2018\simulation.cpp(13): error C4716: 'Simulation::operator>>' : doit retourner une valeur
-c:\users\i\desktop\hashcode2018\hashcode2018\simulation.cpp(10): error C4716: 'Simulation::operator<<' : doit retourner une valeur
-  Ignoré... (aucune modification pertinente détectée)
+  Compilation en cours...
   main.cpp
+  Génération de code en cours...
+  HashCode2018.vcxproj -> C:\Users\i\Desktop\HashCode2018\x64\Debug\HashCode2018.exe

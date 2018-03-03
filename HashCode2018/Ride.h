@@ -13,10 +13,10 @@ class Ride {
 			Ride(intersection start, intersection finish, unsigned int earliest, unsigned int latest);
 			Ride() = delete;
 		// getters
-			intersection getStart();
-			intersection getFinish();
-			unsigned int getEarliest();
-			unsigned int getLatest();
+			intersection getStart() const;
+			intersection getFinish() const;
+			unsigned int getEarliest() const;
+			unsigned int getLatest() const;
 		// operators
 			std::ostream& operator<<(std::ostream& os) const;
 			std::istream& operator>>(std::istream& is);
