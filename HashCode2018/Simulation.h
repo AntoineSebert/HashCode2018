@@ -5,15 +5,15 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 class Simulation {
 	private:
 		std::vector<Vehicle> activeVehicle, inactiveVehicle;
 		std::vector<Ride> rides;
 		unsigned int nbVehicle, nbRide;
-		unsigned int time;
+		unsigned int time, bonus;
 		unsigned int height, width;
-		unsigned int bonus;
 		std::string fileLoaded;
 	public:
 		// constructor
@@ -23,5 +23,6 @@ class Simulation {
 		// others
 			void run();
 			void loadFile(std::string filename);
-			void updateVehiclesStatus();
+	private:
+		void updateVehiclesStatus();
 };

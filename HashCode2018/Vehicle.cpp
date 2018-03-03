@@ -18,9 +18,9 @@ unsigned int Vehicle::counter = 0;
 	void Vehicle::setDestination(intersection dest) { destination = dest; }
 // operators
 	ostream& Vehicle::operator<<(ostream& os) const {
-		os << id << "=pos(" << position << "), dest(" << destination << "), rides{";
+		os << id << "=pos(" << position << "), dest(" << destination << "), rides{" << endl;
 		for (Ride* ride : rides)
-			os << ride << ' ';
+			os << '\t' << ride << ' ';
 		os << '}';
 		return os;
 	}

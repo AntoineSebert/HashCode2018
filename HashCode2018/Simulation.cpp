@@ -6,8 +6,20 @@ using namespace std;
 	Simulation::Simulation() { width = height = time = nbRide = nbVehicle = 0; }
 // operators
 	ostream& Simulation::operator<<(ostream& os) const {
-		os << fileLoaded;
-		return os << fileLoaded;
+		os << fileLoaded << "=(height:" << height << ",width:" << width << "),(time:" << time << ",bonus:" << bonus << ')' << endl;
+		os << "vehicles:" << nbVehicle << endl;
+		os << "active vehicles:" << activeVehicle.size() << endl;
+		/*
+		for (const auto& element : activeVehicle)
+			os << element << endl;
+		os << "inactive vehicles:" << inactiveVehicle.size() << endl;
+		for (const auto& element : inactiveVehicle)
+			os << element << endl;
+		os << "rides:" << activeVehicle.size() << endl;
+		for (const auto& element : rides)
+			os << element << endl;
+		*/
+		return os;
 	}
 // others
 	void Simulation::run() {
@@ -57,6 +69,7 @@ using namespace std;
 			cout << "file loaded" << endl;
 		}
 	}
+
 	void Simulation::updateVehiclesStatus() {
 		for (auto it = inactiveVehicle.begin(); it != inactiveVehicle.end(); ++it) {
 			if (it->moveToDest()) {
