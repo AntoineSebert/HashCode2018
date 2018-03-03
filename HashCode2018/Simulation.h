@@ -23,7 +23,7 @@ class Simulation {
 		// others
 			void run();
 			void loadFile(std::string filename);
-			void export();
+			void exportToFile();
 	private:
 		void updateVehiclesStatus();
 };

@@ -18,6 +18,7 @@ class Vehicle {
 			intersection getPosition() const;
 			bool active() const;
 			unsigned int getRidesCount() const;
+			std::list<Ride*> getRides() const;
 		// setters
 			void setDestination(intersection dest);
 		// operators

@@ -69,15 +69,17 @@ using namespace std;
 			cout << "file loaded" << endl;
 		}
 	}
-	void Simulation::export() {
+	void Simulation::exportToFile() {
 		string outputfile = fileLoaded.substr(fileLoaded.find('.'));
-		ofstream ofs(outputfile + ".out", std::ofstream::out);
+		ofstream os(outputfile + ".out", std::ofstream::out);
 
-		for (unsigned int i = 0; i < nbVehicle; ++i) {
-
+		for (const auto& vehicle : inactiveVehicle) {
+			os << vehicle.getRidesCount() << ' ';
+			//for (const auto ride : vehicle.)
+			os << endl;
 		}
 
-		ofs.close();
+		os.close();
 	}
 
 	void Simulation::updateVehiclesStatus() {
@@ -85,6 +87,10 @@ using namespace std;
 			if (it->moveToDest()) {
 				inactiveVehicle.push_back(*it);
 				activeVehicle.erase(it);
+			}
+			else {
+				activeVehicle.push_back(*it);
+				inactiveVehicle.erase(it);
 			}
 		}
 	}
