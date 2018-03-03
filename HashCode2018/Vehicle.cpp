@@ -14,6 +14,7 @@ unsigned int Vehicle::counter = 0;
 // getters
 	intersection Vehicle::getPosition() const { return position; }
 	bool Vehicle::active() const { return !rides.empty(); }
+	unsigned int Vehicle::getRidesCount() const { return rides.size(); }
 // setters
 	void Vehicle::setDestination(intersection dest) { destination = dest; }
 // operators

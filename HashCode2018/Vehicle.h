@@ -17,6 +17,7 @@ class Vehicle {
 		// getters
 			intersection getPosition() const;
 			bool active() const;
+			unsigned int getRidesCount() const;
 		// setters
 			void setDestination(intersection dest);
 		// operators
