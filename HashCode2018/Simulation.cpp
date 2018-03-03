@@ -27,6 +27,10 @@ using namespace std;
 
 		while (rides.size()) {
 			for (int j = 0; j < rides.size(); ++j) {
+				if(time > rides.at(j).getFinish()){
+					deleteMe.push_back(j);
+					continue;
+				}
 				for (unsigned int i = 0; i < inactiveVehicle.size(); ++i) {
 					if (time + (rides.at(j).getFinish() - inactiveVehicle.at(i).getPosition()) <= rides.at(j).getLatest()) {
 						deleteMe.push_back(j);
