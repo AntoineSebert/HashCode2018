@@ -68,18 +68,22 @@ using namespace std;
 			}
 			cout << "file loaded" << endl;
 		}
+
 	}
 	void Simulation::exportToFile() {
 		string outputfile = fileLoaded.substr(fileLoaded.find('.'));
 		ofstream os(outputfile + ".out", std::ofstream::out);
+		cout << "Exporting data to " << outputfile << "..." << endl;
 
 		for (const auto& vehicle : inactiveVehicle) {
 			os << vehicle.getRidesCount() << ' ';
-			//for (const auto ride : vehicle.)
+			for (unsigned int i = 0; i < vehicle.getRides().size(); ++i)
+				os << i << ' ';
 			os << endl;
 		}
 
 		os.close();
+		cout << "Exportatino done" << endl;
 	}
 
 	void Simulation::updateVehiclesStatus() {

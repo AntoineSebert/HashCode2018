@@ -13,6 +13,7 @@ int main(int argc, char** argv) {
 	//simul.loadFile(argv[1]);
 	simul.loadFile("a_example.in");
 	simul.run();
+	simul.exportToFile();
 
 	system("pause");
 	

@@ -1,12 +1,2 @@
-﻿  Vehicle.cpp
-c:\users\i\desktop\hashcode2018\hashcode2018\vehicle.cpp(19): error C2440: 'return' : impossible de convertir de 'const std::list<Ride *,std::allocator<_Ty>> *' en 'std::list<Ride *,std::allocator<_Ty>> &'
-          with
-          [
-              _Ty=Ride *
-          ]
-  Génération de code en cours...
-  Compilation en cours...
-  Simulation.cpp
-  Génération de code en cours...
-  Ignoré... (aucune modification pertinente détectée)
-  main.cpp
+﻿  Simulation.cpp
+  HashCode2018.vcxproj -> C:\Users\i\Desktop\HashCode2018\x64\Debug\HashCode2018.exe
