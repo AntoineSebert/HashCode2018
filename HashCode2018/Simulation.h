@@ -26,4 +26,5 @@ class Simulation {
 			void exportToFile();
 	private:
 		void updateVehiclesStatus();
+		void updateRides(std::vector<int>& toDelete);
 };

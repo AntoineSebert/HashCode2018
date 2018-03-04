@@ -26,8 +26,11 @@ using namespace std;
 		vector<int> deleteMe;
 		unsigned int time = 0;
 
-		while (rides.size()) {
+		cout << "Running... " << endl;
+
+		while (rides.size() && time < maximalTime) {
 			for (int j = 0; j < rides.size(); ++j) {
+				/*
 				if(time > rides.at(j).getLatest()){
 					deleteMe.push_back(j);
 					continue;
@@ -40,14 +43,15 @@ using namespace std;
 						i = (unsigned int)inactiveVehicle.size();
 					}
 				}
+			*/
 			}
-			for (unsigned int i = 0; i < deleteMe.size(); ++i)
-				rides.erase(rides.begin() + (deleteMe.at(i) - i));
-			deleteMe.clear();
 
+			updateRides(deleteMe);
 			updateVehiclesStatus();
 			++time;
 		}
+
+		cout << "Heuristic completed" << endl;
 	}
 	void Simulation::loadFile(string filename) {
 		ifstream file(filename, ios::in);
@@ -94,6 +98,7 @@ using namespace std;
 		os.close();
 		cout << "Exportation done" << endl;
 	}
+
 	void Simulation::updateVehiclesStatus() {
 		for (auto it = activeVehicle.begin(); it != activeVehicle.end(); ++it) {
 			if (it->moveToDest()) {
@@ -101,4 +106,9 @@ using namespace std;
 				activeVehicle.erase(it);
 			}
 		}
+	}
+	void Simulation::updateRides(vector<int>& toDelete) {
+		for (unsigned int i = 0; i < toDelete.size(); ++i)
+			rides.erase(rides.begin() + (toDelete.at(i) - i));
+		toDelete.clear();
 	}
