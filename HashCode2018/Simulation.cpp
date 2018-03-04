@@ -30,7 +30,6 @@ using namespace std;
 
 		while (rides.size() && time < maximalTime) {
 			for (int j = 0; j < rides.size(); ++j) {
-				/*
 				if(time > rides.at(j).getLatest()){
 					deleteMe.push_back(j);
 					continue;
@@ -39,11 +38,11 @@ using namespace std;
 					if (time + (rides.at(j).getFinish() - inactiveVehicle.at(i).getPosition()) <= rides.at(j).getLatest()) {
 						deleteMe.push_back(j);
 						activeVehicle.push_back(inactiveVehicle.at(i));
+
 						inactiveVehicle.erase(inactiveVehicle.begin() + i);
 						i = (unsigned int)inactiveVehicle.size();
 					}
 				}
-			*/
 			}
 
 			updateRides(deleteMe);
