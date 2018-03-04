@@ -3,10 +3,10 @@
 using namespace std;
 
 // constructor
-	Simulation::Simulation() { width = height = time = nbRide = nbVehicle = 0; }
+	Simulation::Simulation() { width = height = maximalTime = nbRide = nbVehicle = 0; }
 // operators
 	ostream& Simulation::operator<<(ostream& os) const {
-		os << fileLoaded << "=(height:" << height << ",width:" << width << "),(time:" << time << ",bonus:" << bonus << ')' << endl;
+		os << fileLoaded << "=(height:" << height << ",width:" << width << "),(time:" << maximalTime << ",bonus:" << bonus << ')' << endl;
 		os << "vehicles:" << nbVehicle << endl;
 		os << "active vehicles:" << activeVehicle.size() << endl;
 		/*
@@ -24,6 +24,8 @@ using namespace std;
 // others
 	void Simulation::run() {
 		vector<int> deleteMe;
+		unsigned int time = 0;
+
 		while (rides.size()) {
 			for (int j = 0; j < rides.size(); ++j) {
 				if(time > rides.at(j).getLatest()){
@@ -60,7 +62,7 @@ using namespace std;
 			steps = 0;
 			fileLoaded = filename;
 
-			file >> height >> width >> nbVehicle >> nbRide >> bonus >> time;
+			file >> height >> width >> nbVehicle >> nbRide >> bonus >> maximalTime;
 			
 			for (unsigned int i = 0; i < nbVehicle; ++i)
 				inactiveVehicle.push_back(Vehicle());
@@ -79,7 +81,9 @@ using namespace std;
 	void Simulation::exportToFile() {
 		string outputfile = fileLoaded.substr(0, fileLoaded.find('.'));
 		ofstream os(outputfile + ".out", std::ofstream::out);
+
 		cout << "Exporting data to " << outputfile << "..." << endl;
+
 		for (const auto& vehicle : inactiveVehicle) {
 			os << vehicle.getRidesCount() << ' ';
 			for (unsigned int i = 0; i < vehicle.getRides().size(); ++i)
@@ -90,7 +94,6 @@ using namespace std;
 		os.close();
 		cout << "Exportation done" << endl;
 	}
-
 	void Simulation::updateVehiclesStatus() {
 		for (auto it = activeVehicle.begin(); it != activeVehicle.end(); ++it) {
 			if (it->moveToDest()) {

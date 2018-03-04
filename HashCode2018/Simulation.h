@@ -12,7 +12,7 @@ class Simulation {
 		std::vector<Vehicle> activeVehicle, inactiveVehicle;
 		std::vector<Ride> rides;
 		unsigned int nbVehicle, nbRide;
-		unsigned int time, bonus;
+		unsigned int maximalTime, bonus;
 		unsigned int height, width;
 		std::string fileLoaded;
 	public:
