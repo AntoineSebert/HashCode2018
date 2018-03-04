@@ -36,15 +36,14 @@ using namespace std;
 				}
 				for (unsigned int i = 0; i < inactiveVehicle.size(); ++i) {
 					if (time + (rides.at(j).getFinish() - inactiveVehicle.at(i).getPosition()) <= rides.at(j).getLatest()) {
-						deleteMe.push_back(j);
-						activeVehicle.push_back(inactiveVehicle.at(i));
+						//deleteMe.push_back(j);
+						//activeVehicle.push_back(inactiveVehicle.at(i));
 
 						inactiveVehicle.erase(inactiveVehicle.begin() + i);
 						i = (unsigned int)inactiveVehicle.size();
 					}
 				}
 			}
-
 			updateRides(deleteMe);
 			updateVehiclesStatus();
 			++time;
@@ -100,10 +99,8 @@ using namespace std;
 
 	void Simulation::updateVehiclesStatus() {
 		for (auto it = activeVehicle.begin(); it != activeVehicle.end(); ++it) {
-			if (it->moveToDest()) {
-				inactiveVehicle.push_back(*it);
-				activeVehicle.erase(it);
-			}
+			if (it->moveToDest())
+				move(it, it + 1, back_inserter(inactiveVehicle));
 		}
 	}
 	void Simulation::updateRides(vector<int>& toDelete) {
